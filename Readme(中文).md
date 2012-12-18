@@ -98,5 +98,112 @@ while (items.length) {
 
 ## 变量, 属性, 方法名使用小骆驼拼写法
 
+变量, 属性和方法名应该使用`小骆驼拼写法`. 他们应该同样是描述性的. 单个字符的变量和不常见的缩写通常应该是避免的.
 
+*正确:*
 
+```js
+var adminUser = db.query('SELECT * FROM users ...');
+```
+
+*错误:*
+
+```js
+var admin_user = db.query('SELECT * FROM users ...');
+```
+
+## 类名使用大骆驼拼写法
+
+类名应该使用`大骆驼拼写法`.
+
+*正确:*
+
+```js
+function BankAccount() {
+}
+```
+
+*错误:*
+
+```js
+function bank_Account() {
+}
+```
+
+## 常量大写
+
+常量应该被声明成常规变量, 或者静态类属性, 使用所有的大写字母.
+
+Node.js / V8 虽然支持Mozilla的[const][const]扩展, 但是不幸的是, 这个不能适用于类的成员变量, 同样也不是ECMA的标准.
+
+*正确:*
+
+```js
+var SECOND = 1 * 1000;
+
+function File() {
+}
+File.FULL_PERMISSIONS = 0777;
+```
+
+*错误:*
+
+```js
+const SECOND = 1 * 1000;
+
+function File() {
+}
+File.fullPermissions = 0777;
+``` 
+
+[const]: https://developer.mozilla.org/en/JavaScript/Reference/Statements/const
+
+## 对象 / 数组建立
+
+使用后面的逗号, 并且使用短声明在每1行上. 只在key上放引号, 当你的解释器抱怨的时候.
+
+*正确:*
+
+```js
+var a = ['hello', 'world'];
+var b = {
+  good: 'code',
+  'is generally': 'pretty',
+};
+```
+
+*错误:*
+
+```js
+var a = [
+  'hello', 'world'
+];
+var b = {"good": 'code'
+        , is generally: 'pretty'
+        };
+```
+
+## 使用===符号
+
+编程不是关于记住那些[愚蠢的规则][comparisonoperators]. 使用3个恒等于, 因为它会像预期的那样工作.
+
+*正确:*
+
+```js
+var a = 0;
+if (a === '') {
+  console.log('winning');
+}
+
+```
+
+*错误:*
+
+```js
+var a = 0;
+if (a == '') {
+  console.log('losing');
+}
+```
+
+[comparisonoperators]: https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators
