@@ -39,6 +39,7 @@ var foo = 'bar';
 
 ```js
 var foo = "bar";
+```
 
 ## 不换行使用大括号
 
