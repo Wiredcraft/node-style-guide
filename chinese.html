@@ -33,14 +33,205 @@
           
         <h1 id="nodejs">Node.js代码风格指南</h1>
 
-        <p>这是一篇关于如何写出统一和优雅的Node.js代码的指南. 激发的灵感是社区中流行的代码,和受人喜爱的一些个人观点.</p>
-        <p>这份指南是由<a href="http://felixge.de/">Felix Geisendörfer</a>建立的. 版权协议是<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. 鼓励大家fork这个repository,并根据自己的偏好做出调整.</p>
-        <p><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="Creative Commons License" title="" /></p>
-        <h2 id="4">4格缩进</h2>
-        <p>用4个空格作为缩进,发誓不要混淆Tab和空格,在你的代码中. 不然的话,另一个地狱说不定在等待你.</p>
-        <h2 id="">结尾没有空格</h2>
-        <p>就和你每次吃饭后刷牙一样,你清除所有的结尾空格,在你提交JS文件之前. 否则不小心造成的疏忽所产生的腐烂味道,会最终赶走所有的贡献者和同事.</p>
+        <p>这是一篇关于如何写出统一和优雅的Node.js代码的指南. 激发的灵感是社区中流行的代码, 和受人喜爱的一些个人观点.</p>
 
+        <p>这份指南是由<a href="http://felixge.de/">Felix Geisendörfer</a>建立的. 版权协议是<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. 鼓励大家fork这个repository, 并根据自己的偏好做出调整.</p>
+
+        <p><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="Creative Commons License" title="" /></p>
+
+        <h2 id="4">4格缩进</h2>
+
+        <p>用4个空格作为缩进, 发誓不要混淆Tab和空格, 在你的代码中. 不然的话, 另一个地狱说不定在等待你.</p>
+
+        <h2 id="">结尾没有空格</h2>
+
+        <p>就和你每次吃饭后刷牙一样, 你清除所有的结尾空格, 在你提交JS文件之前. 否则不小心造成的疏忽所产生的腐烂味道, 会最终赶走所有的贡献者和同事.</p>
+
+        <h2 id="">使用分号</h2>
+
+        <p>根据<a href="http://news.ycombinator.com/item?id=1547647">科学研究</a>, 使用分号是我们(JavaScript)社区的核心价值. 考虑到这点<a href="http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding">the opposition</a>, 但是请按照传统的方法使用分号, 当它成为滥用错误纠正机制, 为了廉价的语法快乐.</p>
+
+        <h2 id="80">每行80字</h2>
+
+        <p>约束你每行的字数最大到80字. 是的, 这几年显示器变的越来越大, 但是你的大脑却没有. 使用额外的功能去分屏. 你的编辑器支持这个功能, 对吗?</p>
+
+        <h2 id="">使用单引号</h2>
+
+        <p>使用单引号, 除非你在写JSON.</p>
+
+        <p><em>正确:</em></p>
+
+        <p><code>js
+        var foo = 'bar';
+        </code></p>
+
+        <p><em>错误:</em></p>
+
+        <p>&#8220;`js
+        var foo = &#8220;bar&#8221;;</p>
+
+        <h2 id="">不换行使用大括号</h2>
+
+        <p>大括号在语句之后紧跟, 不需要换行.</p>
+
+        <p><em>正确:</em></p>
+
+        <p><code>js
+        if (true) {
+          console.log('winning');
+        }
+        </code></p>
+
+        <p><em>错误:</em></p>
+
+        <p><code>js
+        if (true)
+        {
+          console.log('losing');
+        }
+        </code></p>
+
+        <p>同样, 请注意在条件语句的前后, 使用空格.</p>
+
+        <h2 id="">每行声明一个变量</h2>
+
+        <p>每行申明一个变量, 这个会让我们容易重新安排行数. 在这里忽略<a href="http://javascript.crockford.com/code.html">Crockford</a>的方式, 尽可能的显式申明.</p>
+
+        <p><em>正确:</em></p>
+
+        <p>&#8220;`js
+        var keys   = [&#8216;foo&#8217;, &#8216;bar&#8217;];
+        var values = [23, 42];</p>
+
+        <p>var object = {};
+        while (items.length) {
+          var key = keys.pop();
+          object[key] = values.pop();
+        }
+        &#8220;`</p>
+
+        <p><em>错误:</em></p>
+
+        <p>&#8220;`js
+        var keys = [&#8216;foo&#8217;, &#8216;bar&#8217;],
+            values = [23, 42],
+            object = {},
+            key;</p>
+
+        <p>while (items.length) {
+          key = keys.pop();
+          object[key] = values.pop();
+        }
+        &#8220;`</p>
+
+        <h2 id="_">变量, 属性, 方法名使用小骆驼拼写法</h2>
+
+        <p>变量, 属性和方法名应该使用<code>小骆驼拼写法</code>. 他们应该同样是描述性的. 单个字符的变量和不常见的缩写通常应该是避免的.</p>
+
+        <p><em>正确:</em></p>
+
+        <p><code>js
+        var adminUser = db.query('SELECT * FROM users ...');
+        </code></p>
+
+        <p><em>错误:</em></p>
+
+        <p><code>js
+        var admin_user = db.query('SELECT * FROM users ...');
+        </code></p>
+
+        <h2 id="">类名使用大骆驼拼写法</h2>
+
+        <p>类名应该使用<code>大骆驼拼写法</code>.</p>
+
+        <p><em>正确:</em></p>
+
+        <p><code>js
+        function BankAccount() {
+        }
+        </code></p>
+
+        <p><em>错误:</em></p>
+
+        <p><code>js
+        function bank_Account() {
+        }
+        </code></p>
+
+        <h2 id="">常量大写</h2>
+
+        <p>常量应该被声明成常规变量, 或者静态类属性, 使用所有的大写字母.</p>
+
+        <p>Node.js / V8 虽然支持Mozilla的<a href="https://developer.mozilla.org/en/JavaScript/Reference/Statements/const">const</a>扩展, 但是不幸的是, 这个不能适用于类的成员变量, 同样也不是ECMA的标准.</p>
+
+        <p><em>正确:</em></p>
+
+        <p>&#8220;`js
+        var SECOND = 1 * 1000;</p>
+
+        <p>function File() {
+        }
+        File.FULL_PERMISSIONS = 0777;
+        &#8220;`</p>
+
+        <p><em>错误:</em></p>
+
+        <p>&#8220;`js
+        const SECOND = 1 * 1000;</p>
+
+        <p>function File() {
+        }
+        File.fullPermissions = 0777;
+        &#8220;` </p>
+
+        <h2 id="_">对象 / 数组建立</h2>
+
+        <p>使用后面的逗号, 并且使用短声明在每1行上. 只在key上放引号, 当你的解释器抱怨的时候.</p>
+
+        <p><em>正确:</em></p>
+
+        <p><code>js
+        var a = ['hello', 'world'];
+        var b = {
+          good: 'code',
+          'is generally': 'pretty',
+        };
+        </code></p>
+
+        <p><em>错误:</em></p>
+
+        <p><code>js
+        var a = [
+          'hello', 'world'
+        ];
+        var b = {"good": 'code'
+                , is generally: 'pretty'
+                };
+        </code></p>
+
+        <h2 id="">使用===符号</h2>
+
+        <p>编程不是关于记住那些<a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators">愚蠢的规则</a>. 使用3个恒等于, 因为它会像预期的那样工作.</p>
+
+        <p><em>正确:</em></p>
+
+        <p>&#8220;`js
+        var a = 0;
+        if (a === &#8221;) {
+          console.log(&#8216;winning&#8217;);
+        }</p>
+
+        <p>&#8220;`</p>
+
+        <p><em>错误:</em></p>
+
+        <p><code>js
+        var a = 0;
+        if (a == '') {
+          console.log('losing');
+        }
+        </code></p>
+        
 
 
 
