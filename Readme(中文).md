@@ -208,3 +208,68 @@ if (a == '') {
 ```
 
 [comparisonoperators]: https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators
+
+## 三元判断符多行使用
+
+三元操作符不应该单行使用. 把它分到多行使用.
+
+*正确:*
+
+```js
+var foo = (a === b)
+  ? 1
+  : 2;
+```
+
+*错误:*
+
+```js
+var foo = (a === b) ? 1 : 2;
+```
+
+## 不要扩展内建原型
+
+不要扩展原生JavaScript对象的原型. 你以后的self会永远感恩.
+
+*正确:*
+
+```js
+var a = [];
+if (!a.length) {
+  console.log('winning');
+}
+```
+
+*错误:*
+
+```js
+Array.prototype.empty = function() {
+  return !this.length;
+}
+
+var a = [];
+if (a.empty()) {
+  console.log('losing');
+}
+```
+
+## 使用描述性的语言
+
+任何非平凡的条件应该被赋予一个描述性的参数:
+
+*正确:*
+
+```js
+var isAuthorized = (user.isAdmin() || user.isModerator());
+if (isAuthorized) {
+  console.log('winning');
+}
+```
+*错误:*
+
+```js
+if (user.isAdmin() || user.isModerator()) {
+  console.log('losing');
+}
+```
+
