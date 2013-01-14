@@ -344,4 +344,68 @@ req.on('end', function() {
 
 ## 没有嵌套闭包
 
+使用闭包, 但是没必要嵌套它们. 不然, 你的代码会变得杂乱无章.
 
+*正确:*
+
+```js
+setTimeout(function() {
+  client.connect(afterConnect);
+}, 1000);
+
+function afterConnect() {
+  console.log('winning');
+}
+```
+
+*错误:*
+
+```js
+setTimeout(function() {
+  client.connect(function() {
+    console.log('losing');
+  });
+}, 1000);
+```
+
+## 使用`//`注释
+
+使用`//`作为单行和多行的注释. 写注释, 是为了解释高级机制, 或者你代码中困难的地方. 不要注释那些陈述那些琐碎的事情.
+
+*正确:*
+
+```js
+// 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE'', 'SOMETHING', 'VALUE']
+var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+
+// This function has a nasty side effect where a failure to increment a
+// redis counter used for statistics will cause an exception. This needs
+// to be fixed in a later iteration.
+function loadUser(id, cb) {
+  // ...
+}
+
+var isSessionValid = (session.expires < Date.now());
+if (isSessionValid) {
+  // ...
+}
+```
+
+*错误:*
+
+```js
+// Execute a regex
+var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+
+// Usage: loadUser(5, function() { ... })
+function loadUser(id, cb) {
+  // ...
+}
+
+// Check if the session is valid
+var isSessionValid = (session.expires < Date.now());
+// If the session is valid
+if (isSessionValid) {
+  // ...
+}
+```
