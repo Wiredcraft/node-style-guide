@@ -275,6 +275,73 @@ if (user.isAdmin() || user.isModerator()) {
 
 ## 写精简的方法
 
-保持你的方法很精简. 如果一个函数写的好,那么它能在演讲上使用,而且大教室里的最后几排的人都可以清楚的看懂. 所以不要计算它们有完美的世界,并且限制你自己每个函数只写15行.
+保持你的方法很精简. 如果一个函数写的好, 那么它能在演讲上使用, 而且大教室里的最后几排的人都可以清楚的看懂. 所以不要计算它们有完美的世界, 并且限制你自己每个函数只写15行.
+
+## 快速返回值
+
+为了避免if语句的深层嵌套, 请尽快返回一个函数的结果.
+
+*正确:*
+
+```js
+function isPercentage(val) {
+  if (val < 0) {
+    return false;
+  }
+
+  if (val > 100) {
+    return false;
+  }
+
+  return true;
+}
+```
+
+*错误:*
+
+```js
+function isPercentage(val) {
+  if (val >= 0) {
+    if (val < 100) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+```
+
+或者为了这个特别的例子, 可能缩短一点更好:
+
+```js
+function isPercentage(val) {
+  var isInRange = (val >= 0 && val <= 100);
+  return isInRange;
+}
+```
+
+## 给你的闭包命名
+
+随便给你的闭包取个名字. 这意味着你关心他们, 并且能更好的追踪栈, 堆, 和CPU性能问题.
+
+*正确:*
+
+```js
+req.on('end', function onEnd() {
+  console.log('winning');
+});
+```
+
+*错误:*
+
+```js
+req.on('end', function() {
+  console.log('losing');
+});
+```
+
+## 没有嵌套闭包
 
 
