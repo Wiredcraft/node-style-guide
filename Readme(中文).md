@@ -409,3 +409,19 @@ if (isSessionValid) {
   // ...
 }
 ```
+
+## Object.freeze, Object.preventExtensions, Object.seal, with, eval
+
+这些东西你可能从来不会需要它. 可以远离他们.
+
+## Getters and setters
+
+不要使用setters, 他们会给用你的软件的人制造更多的问题.
+
+合适的时候使用getters, 当他们没有[副作用][sideeffect]的时候, 就好像提供一个集合类的长度属性的时候.
+
+[sideeffect]: http://en.wikipedia.org/wiki/Side_effect_(computer_science)
+
+
+
+
